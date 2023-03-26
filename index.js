@@ -15,10 +15,15 @@ const serpmeKahvalti = {isim: "Serpme Kahvaltı", fiyat: 16, kategori:"Kahvaltı
 */
 
 
-function MenuElemaniOlustur(/*Kodlar buraya*/){
-	/*Kodlar buraya*/
+function MenuElemaniOlustur(icerik1,icerik2,icerik3){
+	const yenimenu={
+		isim:icerik1,
+		fiyat:icerik2,
+		kategori:icerik3,
+	}
+	return yenimenu;
 }
-
+console.log(MenuElemaniOlustur('Cheeseburger', 8, 'Burgerler'))
 
 
 /*  Görev 1b (otomatik test yok): 
@@ -31,6 +36,13 @@ function MenuElemaniOlustur(/*Kodlar buraya*/){
 	Örnek: MenuElemaniOlustur("Karışık Pizza",5,"Pizzalar") şunu döndürür: {isim:"Karışık Pizza",fiyat:5,kategori:"Pizzalar"}
 */
 
+
+	const fırın1=MenuElemaniOlustur("karamelli" , 50 , "ekler");
+	const fırın2=MenuElemaniOlustur("vişneli" , 60 , "cheesecake");
+	const fırın3=MenuElemaniOlustur("kakaolu" , 75 , "kek");
+	
+
+console.log(fırın1,fırın2,fırın3)
 
 
 /* Görev 2: 
@@ -51,7 +63,20 @@ const burger = {
 	fiyat: 18, 
 	kategori: "Öğle Yemeği", 
 
-}
+	indirim:function (kişi){
+		if(kişi=="öğretmen"|| kişi=="öğrenci")
+		{
+			 this.fiyat=18*0.75;
+			 return this.fiyat
+			}
+		else{this.fiyat=18*0.9
+		return this.fiyat}
+	  }
+	  }
+	  console.log(burger.indirim("öğretmen"))
+	  console.log(burger.indirim("öğrenci"))
+	  console.log(burger.indirim("diğer"))
+	  console.log(burger.fiyat);
 
 
 
@@ -71,7 +96,8 @@ const degerlendirmeler = [
 	Yukarıdaki degerlendirmeler dizisini(array) kullanarak:
 	1. Sadece Ahmet'in geribildirimini konsolda görüntüleyin - fonksiyona gerek yok
 */
-
+let isimli1=degerlendirmeler.find(kisi=>kisi.isim==="Ahmet");
+console.log(isimli1.geribildirim)
 
 
 /*  Görev 4 (ototest yok):  
@@ -79,11 +105,13 @@ const degerlendirmeler = [
 	1. Bu geribildirimi Reyna'nın değerlendirmesine ekleyin - "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım"
 	2. degerlendirmeler dizisini konsolda görüntüleyerek çalışmanızı kontrol edin
 */
-
+let isimli2=degerlendirmeler.find(kisi=>kisi.isim==="Reyna")
+degerlendirmeler[degerlendirmeler.indexOf(isimli2)].geribildirim="bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım"
+console.log(isimli2.geribildirim)
 
 
 /*  Görev 5: 
-	isim, puan, geribildirim'i içeren bir değerlendirme nesnesi oluşturup, yeni değerlendirmeyi mevcut dizinin(array) sonuna ekleyip sonuç dizisini döndüren bir fonksiyon tanımlayın. 
+	isim, puan, geribildihrim'i içeren bir değerlendirme nesnesi oluşturup, yeni değerlendirmeyi mevcut dizinin(array) sonuna ekleyip sonuç dizisini döndüren bir fonksiyon tanımlayın. 
 	
 	DegerledirmeEkle fonksiyonunu kullanarak aşağıdakileri uygulayın:
 	1. Verilen degerlendirmeler dizisini fonksiyonun İLK parametresi olarak alacak
@@ -94,11 +122,18 @@ const degerlendirmeler = [
 */
 
 
-function DegerledirmeEkle(/*Kodlar buraya */){
-	/*Kodlar buraya */
-	
-}
-
+function DegerledirmeEkle(eklenecekDizi,icerik3,icerik4,icerik5){
+	const eklenecekicerik={
+  isim:icerik3,
+  puan:icerik4,
+  geribildirim:icerik5
+    };
+  console.log(eklenecekicerik)
+  eklenecekDizi.push(eklenecekicerik)
+  console.log(eklenecekDizi)
+return eklenecekDizi
+  } 
+DegerledirmeEkle(degerlendirmeler,"Hurşut","2","Boktan yemekler!")
 
 
 /*  Görev 6: 
@@ -112,10 +147,14 @@ function DegerledirmeEkle(/*Kodlar buraya */){
 */
 
 
-function AnahtardanDegerlendirmeAl(/*Kodlar buraya*/) {
-	/*Kodlar buraya*/
-
-}
+function AnahtardanDegerlendirmeAl(dizin, dataIndex) {
+	
+	const mesaj = `${dizin[dataIndex]?.isim} isimli kişi ${dizin[dataIndex]?.puan} puan verdi ve şunları yazdı: ${dizin[dataIndex]?.geribildirim}`;
+	
+	//console.log(mesaj)
+	return mesaj;
+  }
+ // console.log(AnahtardanDegerlendirmeAl(degerlendirmeler,0))
 
 
 
@@ -132,9 +171,17 @@ function AnahtardanDegerlendirmeAl(/*Kodlar buraya*/) {
 */
 
 
-function SonDegerlendirmeyiAl(/*Kodlar buraya*/) {
-	/*Kodlar buraya*/
-} 
+function SonDegerlendirmeyiAl(dizin){
+	const sonIndex=dizin.length-1
+	const mesaj=dizin[sonIndex].isim+
+		  " isimli kişi "+
+		  dizin[sonIndex].puan+ " puan verdi ve şunları yazdı: "+
+		  dizin[sonIndex].geribildirim;
+	console.log(mesaj)
+	return mesaj;
+  }
+  console.log(AnahtardanDegerlendirmeAl(degerlendirmeler))
+
 
 
 
